@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Test Widget — COI AgentKit</title>
+  <style>
+    body {
+      font-family: -apple-system, sans-serif;
+      background: #f1f5f9;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      margin: 0;
+    }
+    .card {
+      background: #fff;
+      border-radius: 12px;
+      padding: 40px;
+      max-width: 500px;
+      text-align: center;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+    }
+    h1 { color: #1d4ed8; margin: 0 0 8px; }
+    p { color: #64748b; margin: 0 0 24px; }
+    code { background: #f1f5f9; padding: 4px 8px; border-radius: 6px; font-size: 13px; }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <h1>COI AgentKit</h1>
+    <p>El widget de chat aparece en la esquina inferior derecha 👇</p>
+    <p>Backend debe estar corriendo en <code>http://localhost:8000</code></p>
+    <p style="margin-top:16px; font-size:13px; color:#94a3b8;">
+      Iniciá el servidor con:<br>
+      <code>uvicorn agent.main:app --reload --port 8000</code>
+    </p>
+  </div>
+
+  <script>
+    window.AgentKitConfig = {
+      apiUrl: "http://localhost:8000",
+      title: "Asistente COI",
+      subtitle: "¿En qué te puedo ayudar?",
+      primaryColor: "#1d4ed8"
+    };
+  </script>
+  <script src="widget/widget.js"></script>
+</body>
+</html>
