@@ -1,5 +1,5 @@
 /**
- * COI AgentKit — Widget de Chat Embebible
+ * Centro de la Visión AgentKit — Widget de Chat Embebible
  *
  * Uso:
  *   <script src="https://tu-backend.railway.app/widget/widget.js"></script>
@@ -8,7 +8,7 @@
  *   <script>
  *     window.AgentKitConfig = {
  *       apiUrl: "https://tu-backend.railway.app",  // requerido si no está embebido
- *       title: "Asistente COI",
+ *       title: "Centro de la Visión",
  *       subtitle: "¿En qué te puedo ayudar?",
  *       primaryColor: "#2563eb",
  *       position: "right"  // "right" o "left"
@@ -22,8 +22,8 @@
   // ── Configuración ────────────────────────────────────────────────────────
   var config = window.AgentKitConfig || {};
   var API_URL = (config.apiUrl || "http://localhost:8000").replace(/\/$/, "");
-  var TITLE = config.title || "Asistente COI";
-  var SUBTITLE = config.subtitle || "¡Hola! ¿En qué te puedo ayudar hoy? 👁️";
+  var TITLE = config.title || "Centro de la Visión";
+  var SUBTITLE = config.subtitle || "¿En qué te puedo ayudar? 👁️";
   var PRIMARY = config.primaryColor || "#1d4ed8";
   var POSITION = config.position === "left" ? "left" : "right";
 
@@ -371,7 +371,7 @@
 
     if (!greeted) {
       greeted = true;
-      addMessage("assistant", "¡Hola! 👋 Soy Anto, la asistente virtual del COI. ¿En qué te puedo ayudar hoy?");
+      addMessage("assistant", "¡Hola! 👋 Soy Anto, la asistente virtual del Centro de la Visión. ¿En qué te puedo ayudar hoy?");
     }
   }
 
