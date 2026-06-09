@@ -306,7 +306,12 @@
   function addMessage(role, text) {
     var div = document.createElement("div");
     div.className = "ak-msg " + role;
-    div.textContent = text;
+    // Renderizar HTML para mensajes del asistente (botones, links)
+    if (role === "assistant") {
+      div.innerHTML = text;
+    } else {
+      div.textContent = text;
+    }
     messages.appendChild(div);
     scrollBottom();
     return div;
