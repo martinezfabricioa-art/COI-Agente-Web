@@ -240,6 +240,22 @@
       padding: 4px 0 8px;
       background: #fff;
     }
+
+    .ak-msg.assistant a {
+      display: inline-block;
+      padding: 8px 14px;
+      margin-top: 8px;
+      background: #25D366;
+      color: #fff !important;
+      border-radius: 6px;
+      text-decoration: none !important;
+      font-weight: 500;
+      font-size: 13px;
+      transition: opacity 0.2s;
+    }
+    .ak-msg.assistant a:hover {
+      opacity: 0.88;
+    }
   `;
 
   // ── Inyectar CSS ───────────────────────────────────────────────────────────
@@ -306,12 +322,21 @@
   function addMessage(role, text) {
     var div = document.createElement("div");
     div.className = "ak-msg " + role;
-    // Renderizar HTML para mensajes del asistente (botones, links)
+
     if (role === "assistant") {
+      // Procesar HTML tags (especialmente <a> tags)
       div.innerHTML = text;
+
+      // Hacer links seguros (noopener, noreferrer)
+      var links = div.querySelectorAll("a");
+      links.forEach(function(link) {
+        link.setAttribute("target", "_blank");
+        link.setAttribute("rel", "noopener noreferrer");
+      });
     } else {
       div.textContent = text;
     }
+
     messages.appendChild(div);
     scrollBottom();
     return div;
