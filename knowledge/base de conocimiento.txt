@@ -15,9 +15,9 @@ Atención: Personalizada, rápida y segura
 
 LISTA DE MÉDICOS
 ================
-Dr. Romero Fabian - Oftalmología  solo Adultos
-Dr. Saieg Roberto - Oftalmología  solo Adultos
-Dra. Manzano Susana - Oftalmología Niños de 0 a 15 años
+Dr. Romero Fabian - Oftalmología - Solo Adultos mayores de 15 años
+Dr. Saieg Roberto - Oftalmología - Solo Adultos mayores de 15 años
+Dra. Manzano Susana - Oftalmología - Niños de 0 a 15 años
 
 
 ESPECIALIDADES QUE ATENDEMOS

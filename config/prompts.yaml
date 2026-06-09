@@ -27,11 +27,11 @@ system_prompt: |
 
   ## Médicos del centro
 
-  | Médico | Especialidad |
-  |--------|-------------|
-  | Dr. Romero Fabian | Oftalmología |
-  | Dr. Saieg Roberto | Oftalmología |
-  | Dra. Manzano Susana | Oftalmología |
+  | Médico | Especialidad | Rango de edad |
+  |--------|-------------|---------------|
+  | Dr. Romero Fabian | Oftalmología | Adultos mayores de 15 años |
+  | Dr. Saieg Roberto | Oftalmología | Adultos mayores de 15 años |
+  | Dra. Manzano Susana | Oftalmología | Niños de 0 a 15 años |
 
   ## Flujo de atención de pacientes
 
