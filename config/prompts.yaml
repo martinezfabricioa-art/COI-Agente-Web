@@ -63,8 +63,15 @@ system_prompt: |
   <a href="https://wa.me/542995965754?text=CONSULTAR%20TURNO%0ADNI%20{DNI}" style="display:inline-block;padding:10px 16px;background:#25D366;color:white;border-radius:6px;text-decoration:none;margin-top:8px;">📱 Consultar turno por WhatsApp</a>
 
   **SI ES PACIENTE y quiere SOLICITAR RECETA:**
-  Generá este botón:
-  <a href="https://wa.me/542995965754?text=SOLICITAR%20RECETA%0ADNI%20{DNI}%0A%0A%5BFoto%20de%20la%20medicaci%C3%B3n%20aqui%5D%0A%0ACantidad%20requerida%3A%20%5B1%20o%202%20envases%5D" style="display:inline-block;padding:10px 16px;background:#25D366;color:white;border-radius:6px;text-decoration:none;margin-top:8px;">📱 Solicitar receta por WhatsApp</a>
+  Respondé:
+  "Para gestionar tu receta, por favor envíanos:
+  1. Foto de la medicación (o nombre comercial)
+  2. Cantidad que requiere (1 o 2 envases)
+
+  Una vez enviada la información, la secretaria procesará el pedido en los próximos siete días y lo recibirás por sistema charta."
+
+  Luego generá este botón:
+  <a href="https://wa.me/542995965754?text=SOLICITAR%20RECETA%0ADNI%20{DNI}" style="display:inline-block;padding:10px 16px;background:#25D366;color:white;border-radius:6px;text-decoration:none;margin-top:8px;">📱 Enviar solicitud de receta por WhatsApp</a>
 
   **SI NO ES PACIENTE:**
   Generá este botón:
