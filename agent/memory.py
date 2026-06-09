@@ -38,6 +38,20 @@ class Mensaje(Base):
     timestamp: Mapped[datetime] = mapped_column(DateTime, default=datetime.utcnow)
 
 
+class Paciente(Base):
+    """Modelo de paciente con datos de contacto."""
+    __tablename__ = "pacientes"
+
+    id: Mapped[int] = mapped_column(Integer, primary_key=True, autoincrement=True)
+    session_id: Mapped[str] = mapped_column(String(100), index=True)
+    nombre: Mapped[str] = mapped_column(String(100))
+    apellido: Mapped[str] = mapped_column(String(100))
+    dni: Mapped[str] = mapped_column(String(20), index=True)
+    obra_social: Mapped[str] = mapped_column(String(100), nullable=True)
+    es_paciente: Mapped[bool] = mapped_column(default=False)
+    timestamp: Mapped[datetime] = mapped_column(DateTime, default=datetime.utcnow)
+
+
 async def inicializar_db():
     """Crea las tablas si no existen."""
     async with engine.begin() as conn:
@@ -92,3 +106,48 @@ async def limpiar_historial(session_id: str):
         stmt = delete(Mensaje).where(Mensaje.session_id == session_id)
         await session.execute(stmt)
         await session.commit()
+
+
+async def guardar_paciente(session_id: str, nombre: str, apellido: str, dni: str, obra_social: str = None, es_paciente: bool = False):
+    """Guarda o actualiza datos de un paciente."""
+    async with async_session() as session:
+        query = select(Paciente).where(Paciente.session_id == session_id)
+        result = await session.execute(query)
+        paciente = result.scalar()
+
+        if paciente:
+            paciente.nombre = nombre
+            paciente.apellido = apellido
+            paciente.dni = dni
+            paciente.obra_social = obra_social
+            paciente.es_paciente = es_paciente
+        else:
+            paciente = Paciente(
+                session_id=session_id,
+                nombre=nombre,
+                apellido=apellido,
+                dni=dni,
+                obra_social=obra_social,
+                es_paciente=es_paciente
+            )
+            session.add(paciente)
+
+        await session.commit()
+
+
+async def obtener_paciente(session_id: str) -> dict:
+    """Obtiene datos del paciente de una sesión."""
+    async with async_session() as session:
+        query = select(Paciente).where(Paciente.session_id == session_id)
+        result = await session.execute(query)
+        paciente = result.scalar()
+
+        if paciente:
+            return {
+                "nombre": paciente.nombre,
+                "apellido": paciente.apellido,
+                "dni": paciente.dni,
+                "obra_social": paciente.obra_social,
+                "es_paciente": paciente.es_paciente
+            }
+        return None

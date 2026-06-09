@@ -15,9 +15,9 @@ Atención: Personalizada, rápida y segura
 
 LISTA DE MÉDICOS
 ================
-Dr. Romero Fabian - Oftalmología
-Dr. Saieg Roberto - Oftalmología
-Dra. Manzano Susana - Oftalmología
+Dr. Romero Fabian - Oftalmología  solo Adultos
+Dr. Saieg Roberto - Oftalmología  solo Adultos
+Dra. Manzano Susana - Oftalmología Niños de 0 a 15 años
 
 
 ESPECIALIDADES QUE ATENDEMOS
@@ -47,10 +47,21 @@ CÓMO SACAR TURNO
 ================
 Opción 1 - Por la web:
 1. Ingresá a https://www.centrodelavisionnqn.com.ar/
-2. Seguí los pasos para registrarte y agendar tu cita
+2. Seguí los pasos para REGISTRARTE 
+👤 Usuario: Tu número de DNI
+🔑 Clave: Tu número de DNI
 
-Opción 2 - Por WhatsApp:
-Escribi al 54 299 5965754 y te ayudamos a agendar tu cita
+Flujo de RECETAS:
+=================
+Para gestionar tu receta, por favor envíanos:
+
+Foto de la medicación (o nombre comercial).
+
+Cantidad que requiere (1 o 2 envases).
+
+Una vez enviada la información, la secretaria procesará el pedido en las próximos siete días lo recibirá por sistema charta.
+
+WhatsApp: Escribi al 54 299 5965754 
 
 
 PRECIOS Y COBERTURAS
@@ -81,3 +92,19 @@ Para consultas sobre coberturas específicas, contactate por WhatsApp al 54 299 
 AVISOS IMPORTANTES
 ==================
 Se sugiere asistir SOLO CON UN ACOMPAÑANTE a los turnos, o en su defecto esperar fuera del establecimiento.
+
+
+
+Opción B: Primera vez
+"¡Bienvenido! Para obtener un turno, primero debes registrarte como paciente en nuestra web:
+🔗 centrodelavisionnqn.com.ar
+
+
+Importante sobre los turnos:
+============================
+Los turnos se habilitan únicamente los días VIERNES en los siguientes horarios:
+Dr. Romero (Adultos): Viernes 14:00 hs.
+
+Dr. Saieg (Adultos): Viernes 14:30 hs.
+
+Dra. Manzano (Niños de 0 a 15 años): Viernes 14:30 hs."

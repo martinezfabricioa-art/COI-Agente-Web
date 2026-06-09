@@ -15,7 +15,7 @@ from pydantic import BaseModel
 from dotenv import load_dotenv
 
 from agent.brain import generar_respuesta
-from agent.memory import inicializar_db, guardar_mensaje, obtener_historial, limpiar_historial
+from agent.memory import inicializar_db, guardar_mensaje, obtener_historial, limpiar_historial, guardar_paciente, obtener_paciente
 
 load_dotenv()
 
@@ -70,6 +70,24 @@ class ChatResponse(BaseModel):
     response: str
 
 
+class PacienteRequest(BaseModel):
+    session_id: str
+    nombre: str
+    apellido: str
+    dni: str
+    obra_social: str = None
+    es_paciente: bool = False
+
+
+class PacienteResponse(BaseModel):
+    session_id: str
+    nombre: str
+    apellido: str
+    dni: str
+    obra_social: str = None
+    es_paciente: bool
+
+
 # ── Endpoints ─────────────────────────────────────────────────────────────────
 
 @app.get("/health")
@@ -121,3 +139,43 @@ async def limpiar_chat(session_id: str):
     await limpiar_historial(session_id)
     logger.info(f"Historial limpiado para sesión {session_id[:8]}...")
     return {"status": "ok", "message": "Historial borrado"}
+
+
+@app.post("/paciente", response_model=PacienteResponse)
+async def crear_paciente(req: PacienteRequest):
+    """Guarda los datos de un paciente."""
+    if not req.session_id or not req.dni:
+        raise HTTPException(status_code=400, detail="session_id y dni son requeridos")
+
+    await guardar_paciente(
+        session_id=req.session_id,
+        nombre=req.nombre,
+        apellido=req.apellido,
+        dni=req.dni,
+        obra_social=req.obra_social,
+        es_paciente=req.es_paciente
+    )
+
+    logger.info(f"[{req.session_id[:8]}...] Paciente guardado: {req.nombre} {req.apellido} (DNI: {req.dni})")
+
+    return PacienteResponse(
+        session_id=req.session_id,
+        nombre=req.nombre,
+        apellido=req.apellido,
+        dni=req.dni,
+        obra_social=req.obra_social,
+        es_paciente=req.es_paciente
+    )
+
+
+@app.get("/paciente/{session_id}", response_model=PacienteResponse)
+async def obtener_datos_paciente(session_id: str):
+    """Obtiene los datos guardados de un paciente."""
+    paciente = await obtener_paciente(session_id)
+    if not paciente:
+        raise HTTPException(status_code=404, detail="Paciente no encontrado")
+
+    return PacienteResponse(
+        session_id=session_id,
+        **paciente
+    )
