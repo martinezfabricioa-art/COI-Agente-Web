@@ -296,7 +296,7 @@
           </svg>
         </button>
       </div>
-      <div id="agentkit-powered">Powered by AgentKit + Claude AI</div>
+      <div id="agentkit-powered">Powered by Azuu Soluciones Web</div>
     </div>
   `;
   document.body.appendChild(wrapper);
