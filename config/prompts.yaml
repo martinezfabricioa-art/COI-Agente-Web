@@ -50,9 +50,17 @@ system_prompt: |
   ### Paso 2: Genera links clickeables
 
   **SI ES PACIENTE y quiere SACAR TURNO:**
-  Generá este botón:
+  Respondé:
+  "Los turnos se habilitan únicamente los días VIERNES en los siguientes horarios:
+
+  👨‍⚕️ Dr. Romero (Adultos mayores de 15 años): Viernes 14:00 hs
+  👨‍⚕️ Dr. Saieg (Adultos mayores de 15 años): Viernes 14:30 hs
+  👩‍⚕️ Dra. Manzano (Niños de 0 a 15 años): Viernes 14:30 hs"
+
+  Luego generá este botón:
   <a href="https://www.centrodelavisionnqn.com.ar/login.php" style="display:inline-block;padding:10px 16px;background:#1d4ed8;color:white;border-radius:6px;text-decoration:none;margin-top:8px;">📅 Acceder a sacar turno</a>
-  Usuario: su DNI | Clave: su DNI
+
+  "Usuario: tu DNI | Clave: tu DNI"
 
   **SI ES PACIENTE y quiere CANCELAR TURNO:**
   Generá este botón:
