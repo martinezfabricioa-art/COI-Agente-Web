@@ -1,4 +1,4 @@
-# agent/main.py — Servidor FastAPI para el agente web COI
+# agent/main.py — Servidor FastAPI para el agente web Centro de la Visión
 
 """
 API REST del agente web. Expone endpoints para el widget de chat embebible.
@@ -35,8 +35,8 @@ async def lifespan(app: FastAPI):
 
 
 app = FastAPI(
-    title="COI Agente Web",
-    description="API del asistente virtual COI — Centro Oftalmológico Integral",
+    title="Centro de la Visión Agente Web",
+    description="API del asistente virtual Centro de la Visión Neuquén",
     version="1.0.0",
     lifespan=lifespan
 )
@@ -75,7 +75,7 @@ class ChatResponse(BaseModel):
 @app.get("/health")
 async def health():
     """Health check."""
-    return {"status": "ok", "service": "COI Agente Web"}
+    return {"status": "ok", "service": "Centro de la Visión Agente Web"}
 
 
 @app.post("/chat", response_model=ChatResponse)

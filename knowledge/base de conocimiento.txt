@@ -1,76 +1,83 @@
-lista de medicos:
-	MORGILLO ANTONIO	 	OFTALMOLOGIA	Nota: No atiende la Obra Social IOSE. No atiende menores de 4 años
-	ARINGOLI JUAN	 	OFTALMOLOGIA	Nota: No atiende Obra Social IOSE.
-	MORGILLO MARIA FERNANDA	 	OFTALMOLOGIA
-	MULLER LUCRECIA	 	OFTALMOLOGIA	No atiende la Obra Social IOSE y OSPERYHRA. No atiende menores de 12 años
-	MORGILLO MARIA FERNANDA
-	PIQUET GREGORIO
-	CASTRO ROSA
-	DORO JIMENA PAOLA	 	OFTALMOLOGIA	NO TRABAJA SWISS MEDICAL y SCIS. OFTALMOLOGIA CLINICA ADULTOS MAYORES A 14 AÑOS
+CENTRO DE LA VISIÓN NEUQUÉN
+============================
 
-precios y cobertura social:
-	consulta particular	$15.000
-	Se cobrará a todas las obras sociales y prepagas diferencia de arancel en consonancia con la Sociedad de Oftalmología del Neuquén
-	61	PARTICULAR
- 	75	APSOT	Asociación del Personal Superior de la Organización Techint
- 	4	AVALIAN	Ex ACA SALUD
- 	72	C.M.L
- 	78	CMESUR	CENTRO MEDICO DEL SUR
- 	15	DIBPFA FUERZA AEREA
- 	37	FATFA
- 	69	FEDERADA SALUD
- 	16	GALENO
- 	62	HIELO
-	18	IOSFA	Instituto de Obra Social de las Fuerzas Armadas
- 	52	ISSN	Instituto de Seguridad Social del Neuquen
- 	68	JERARQUICOS SALUD
- 	19	MEDICUS
- 	20	MEDIFE
- 	83	NOBIS
- 	11	O.M.I.N.T
- 	26	OSDE
- 	27	OSDEPYM
- 	28	OSDIPP
-	24	OSPEPRI
- 	67	OSPERYHRA	OBRA SOCIAL DEL PERSONAL DE EDIFICIOS DE RENTA Y HORIZONTAL DE LA REPUBLICA ARGENTINA
- 	30	OSPESGA
- 	32	OSPIM MADERERA
- 	71	OSPPRA
- 	77	OSSEG	OBRA SOCIAL DE SEGUROS
- 	51	OSSIMRA
- 	41	PODER JUDICIAL DE LA NACION
- 	42	POLICIA FEDERAL ARGENTINA
- 	73	PREVENCION SALUD
-	81	SALUD EMPRESARIAL
- 	66	SALUD TOTAL	salud total
- 	82	SAMPE
- 	70	SAN PEDRO
- 	44	SANCOR SALUD	SANCOR MEDICINA PRIVADA
- 	76	SCIS/TV SALUD
- 	45	SERVICIO PENITENCIARIO FEDERAL U9
- 	46	SOSUNC
- 	47	SWISS MEDICAL
- 	80	VISITAR
+SOBRE EL CENTRO
+===============
+Nombre: Centro de la Visión Neuquén
+Ubicación: Santa Fe 1108 - (8300) Neuquén
+Teléfono/WhatsApp: 54 299 5965754
+Website: https://www.centrodelavisionnqn.com.ar/
 
-Preguntas frecuentes
-	1 Que cobertura existe?
-	Se cobrará a todas las obras sociales y prepagas diferencia de arancel en consonancia con la Sociedad de Oftalmología del Neuquén
-
-	2 Que obras sociales no tendemos?
-	IPROS, SWIS MEDICAL
-
-	3 Cuanto sale la consulta particular
-	$15.000
-
-	4 como sacar un turno?
-		paso 1 Ingreso en http://coineuquen.com.ar/ paso 2 clic en REGISTRASE paso 3 ingreso con mi USUARIO=DNI y CLAVE paso 4 busco el turno con el PROFESIONAL y lo reservo
-
-Preparación para estudios o cirugías
+Experiencia: Más de 20 años en oftalmología
+Tecnología: De vanguardia
+Atención: Personalizada, rápida y segura
 
 
-Políticas de turnos / cancelaciones
+LISTA DE MÉDICOS
+================
+Dr. Romero Fabian - Oftalmología
+Dr. Saieg Roberto - Oftalmología
+Dra. Manzano Susana - Oftalmología
 
-Avisos importantes
-En el mes de Abril NO se entregarán turnos con el Dr. Aringoli. Se abre nuevamente agenda el Sábado 9 de Mayo.
-Sugerimos asistir SOLO CON UN ACOMPAÑANTE a los turnos, o en su defecto esperar fuera del establecimiento.
-Sabado 18/04 NO SE ENTREGARÁN TURNOS con la Dra. Morgillo. Se entregarán nuevamente el 25/04.
+
+ESPECIALIDADES QUE ATENDEMOS
+=============================
+- Cataratas
+- Glaucoma
+- Astigmatismo
+- Hipermetropía
+- Miopía
+- Presbicia
+- Conjuntivitis
+- Insuficiencia límbica
+- Diplopía (visión doble)
+- Estrabismo
+- Retina
+- Queratocono
+
+
+HORARIOS DE ATENCIÓN
+====================
+Lunes a Jueves: 09:00 a 18:00 hs
+Viernes: 09:00 a 13:00 hs
+Sábados, domingos y feriados: Cerrado
+
+
+CÓMO SACAR TURNO
+================
+Opción 1 - Por la web:
+1. Ingresá a https://www.centrodelavisionnqn.com.ar/
+2. Seguí los pasos para registrarte y agendar tu cita
+
+Opción 2 - Por WhatsApp:
+Escribi al 54 299 5965754 y te ayudamos a agendar tu cita
+
+
+PRECIOS Y COBERTURAS
+====================
+Para consultas sobre precios específicos y cobertura de obras sociales o prepagas,
+contactate directamente por WhatsApp al 54 299 5965754
+
+
+PREGUNTAS FRECUENTES
+====================
+¿Cómo saco un turno?
+Podés hacerlo desde https://www.centrodelavisionnqn.com.ar/ o escribiendo por WhatsApp al 54 299 5965754
+
+¿Qué especialidades atienden?
+Atendemos cataratas, glaucoma, astigmatismo, hipermetropía, miopía, presbicia, conjuntivitis,
+insuficiencia límbica, diplopía, estrabismo, retina y queratocono.
+
+¿Cuál es el horario de atención?
+Lunes a Jueves de 09 a 18hs y Viernes de 09 a 13hs
+
+¿Dónde está ubicado?
+Santa Fe 1108 - (8300) Neuquén
+
+¿Atienden mi obra social?
+Para consultas sobre coberturas específicas, contactate por WhatsApp al 54 299 5965754
+
+
+AVISOS IMPORTANTES
+==================
+Se sugiere asistir SOLO CON UN ACOMPAÑANTE a los turnos, o en su defecto esperar fuera del establecimiento.
