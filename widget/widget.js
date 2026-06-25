@@ -411,11 +411,74 @@
           turnosDiv.style.borderLeft = "4px solid #22c55e";
           turnosDiv.innerHTML = data.html;
           messageDiv.appendChild(turnosDiv);
+
+          // Agregar manejadores de eventos para botones de reservar
+          setTimeout(function() {
+            var reservarBtns = turnosDiv.querySelectorAll(".btn-reservar");
+            reservarBtns.forEach(function(btn) {
+              btn.addEventListener("click", function(e) {
+                e.preventDefault();
+                var idTurno = btn.getAttribute("data-id");
+                reservarTurnoAutomatico(idTurno, btn);
+              });
+            });
+          }, 100);
         }
         scrollBottom();
       })
       .catch(function(error) {
         spinnerDiv.textContent = "❌ Error al cargar turnos: " + error.message;
+        scrollBottom();
+      });
+  }
+
+  function reservarTurnoAutomatico(idTurno, btnElement) {
+    if (!idTurno) return;
+
+    // Extraer DNI del historial de mensajes
+    var dniMatch = null;
+    var allMsgs = messages.querySelectorAll(".ak-msg.user");
+    allMsgs.forEach(function(msg) {
+      var match = msg.textContent.match(/\b(\d{7,8})\b/);
+      if (match && !dniMatch) {
+        dniMatch = match[1];
+      }
+    });
+
+    if (!dniMatch) {
+      alert("❌ No encontré tu DNI. Por favor, proporciona tu DNI en la conversación.");
+      return;
+    }
+
+    if (!confirm("¿Estás seguro de que querés reservar este turno?")) {
+      return;
+    }
+
+    var originalText = btnElement.textContent;
+    btnElement.textContent = "⏳ Reservando...";
+    btnElement.disabled = true;
+
+    fetch(API_URL + "/turnos/reservar", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ dni: dniMatch, id_turno: parseInt(idTurno) })
+    })
+      .then(function(response) {
+        return response.json();
+      })
+      .then(function(data) {
+        if (data.status === "success") {
+          btnElement.textContent = "✅ Reservado";
+          btnElement.style.backgroundColor = "#22c55e";
+        } else {
+          btnElement.textContent = "❌ Error: " + data.message;
+          btnElement.style.backgroundColor = "#ef4444";
+        }
+        scrollBottom();
+      })
+      .catch(function(error) {
+        btnElement.textContent = "❌ Error: " + error.message;
+        btnElement.style.backgroundColor = "#ef4444";
         scrollBottom();
       });
   }

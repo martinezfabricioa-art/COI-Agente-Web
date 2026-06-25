@@ -224,14 +224,19 @@ async def mis_turnos_endpoint(dni: str = None):
     return resultado
 
 
+class ReservarTurnoRequest(BaseModel):
+    dni: str
+    id_turno: int
+
+
 @app.post("/turnos/reservar")
-async def reservar_turno_endpoint(dni: str = None, id_turno: int = None):
+async def reservar_turno_endpoint(req: ReservarTurnoRequest):
     """Reserva un turno para el paciente."""
-    if not dni or not id_turno:
+    if not req.dni or not req.id_turno:
         raise HTTPException(status_code=400, detail="DNI e ID de turno requeridos")
 
-    resultado = await reservar_turno(dni, id_turno)
-    logger.info(f"Intento de reservar turno {id_turno} para DNI {dni[:4]}***: {resultado.get('status')}")
+    resultado = await reservar_turno(req.dni, req.id_turno)
+    logger.info(f"Intento de reservar turno {req.id_turno} para DNI {req.dni[:4]}***: {resultado.get('status')}")
     return resultado
 
 
