@@ -184,9 +184,9 @@ async def obtener_datos_paciente(session_id: str):
 
 # ── Endpoints de Turnos ────────────────────────────────────────────────────────
 
-@app.post("/turnos/buscar/{id_profesional}")
+@app.get("/turnos/buscar/{id_profesional}")
 async def buscar_turnos_endpoint(id_profesional: int):
-    """Busca turnos disponibles para un médico."""
+    """Busca turnos disponibles para un médico (devuelve JSON)."""
     resultado = await buscar_turnos(id_profesional)
     medico = get_medico_info(id_profesional)
 
@@ -195,6 +195,22 @@ async def buscar_turnos_endpoint(id_profesional: int):
 
     logger.info(f"Búsqueda de turnos para médico {id_profesional}: {resultado.get('status')}")
     return resultado
+
+
+@app.get("/turnos/buscar-html/{id_profesional}")
+async def buscar_turnos_html(id_profesional: int):
+    """Busca turnos y retorna HTML formateado."""
+    resultado = await buscar_turnos(id_profesional)
+    medico = get_medico_info(id_profesional)
+
+    if resultado.get("status") != "success":
+        return {"html": f"<p style='color: red;'>❌ Error: {resultado.get('message', 'Error desconocido')}</p>"}
+
+    medico_nombre = medico["nombre"] if medico else "Médico"
+    html = f"<strong>📅 Turnos disponibles con {medico_nombre}:</strong><br>"
+    html += resultado.get("data", "<p>No hay datos disponibles</p>")
+
+    return {"html": html}
 
 
 @app.post("/turnos/mis-turnos")

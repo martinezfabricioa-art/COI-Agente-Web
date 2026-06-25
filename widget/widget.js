@@ -324,8 +324,20 @@
     div.className = "ak-msg " + role;
 
     if (role === "assistant") {
-      // Procesar HTML tags (especialmente <a> tags)
-      div.innerHTML = text;
+      // Detectar marcador de búsqueda de turnos [BUSCAR_TURNOS_WIDGET:X]
+      var buscarTurnosMatch = text.match(/\[BUSCAR_TURNOS_WIDGET:(\d+)\]/);
+      if (buscarTurnosMatch) {
+        var idProfesional = parseInt(buscarTurnosMatch[1]);
+        // Remover el marcador del texto
+        text = text.replace(/\[BUSCAR_TURNOS_WIDGET:\d+\]/, "").trim();
+        // Procesar HTML
+        div.innerHTML = text;
+        // Buscar turnos y agregar al mensaje
+        buscarYMostrarTurnos(div, idProfesional);
+      } else {
+        // Procesar HTML tags (especialmente <a> tags)
+        div.innerHTML = text;
+      }
 
       // Hacer links seguros (noopener, noreferrer)
       var links = div.querySelectorAll("a");
@@ -340,6 +352,40 @@
     messages.appendChild(div);
     scrollBottom();
     return div;
+  }
+
+  function buscarYMostrarTurnos(messageDiv, idProfesional) {
+    // Mostrar spinner mientras se buscan turnos
+    var spinnerDiv = document.createElement("div");
+    spinnerDiv.style.marginTop = "8px";
+    spinnerDiv.style.fontSize = "13px";
+    spinnerDiv.style.color = "#94a3b8";
+    spinnerDiv.textContent = "⏳ Cargando turnos disponibles...";
+    messageDiv.appendChild(spinnerDiv);
+
+    // Hacer la llamada para obtener los turnos
+    fetch(API_URL + "/turnos/buscar-html/" + idProfesional)
+      .then(function(response) {
+        return response.json();
+      })
+      .then(function(data) {
+        spinnerDiv.remove();
+        if (data.html) {
+          var turnosDiv = document.createElement("div");
+          turnosDiv.style.marginTop = "8px";
+          turnosDiv.style.padding = "10px";
+          turnosDiv.style.backgroundColor = "#f0fdf4";
+          turnosDiv.style.borderRadius = "6px";
+          turnosDiv.style.borderLeft = "4px solid #22c55e";
+          turnosDiv.innerHTML = data.html;
+          messageDiv.appendChild(turnosDiv);
+        }
+        scrollBottom();
+      })
+      .catch(function(error) {
+        spinnerDiv.textContent = "❌ Error al cargar turnos: " + error.message;
+        scrollBottom();
+      });
   }
 
   function showTyping() {
