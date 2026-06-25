@@ -16,6 +16,7 @@ from dotenv import load_dotenv
 
 from agent.brain import generar_respuesta
 from agent.memory import inicializar_db, guardar_mensaje, obtener_historial, limpiar_historial, guardar_paciente, obtener_paciente
+from agent.turnos import buscar_turnos, ver_mis_turnos, reservar_turno, cancelar_turno, get_medico_info
 
 load_dotenv()
 
@@ -179,3 +180,51 @@ async def obtener_datos_paciente(session_id: str):
         session_id=session_id,
         **paciente
     )
+
+
+# ── Endpoints de Turnos ────────────────────────────────────────────────────────
+
+@app.post("/turnos/buscar/{id_profesional}")
+async def buscar_turnos_endpoint(id_profesional: int):
+    """Busca turnos disponibles para un médico."""
+    resultado = await buscar_turnos(id_profesional)
+    medico = get_medico_info(id_profesional)
+
+    if medico:
+        resultado["medico"] = medico
+
+    logger.info(f"Búsqueda de turnos para médico {id_profesional}: {resultado.get('status')}")
+    return resultado
+
+
+@app.post("/turnos/mis-turnos")
+async def mis_turnos_endpoint(dni: str = None):
+    """Obtiene los turnos del paciente por DNI."""
+    if not dni:
+        raise HTTPException(status_code=400, detail="DNI requerido")
+
+    resultado = await ver_mis_turnos(dni)
+    logger.info(f"Consulta de turnos para DNI {dni[:4]}***: {resultado.get('status')}")
+    return resultado
+
+
+@app.post("/turnos/reservar")
+async def reservar_turno_endpoint(dni: str = None, id_turno: int = None):
+    """Reserva un turno para el paciente."""
+    if not dni or not id_turno:
+        raise HTTPException(status_code=400, detail="DNI e ID de turno requeridos")
+
+    resultado = await reservar_turno(dni, id_turno)
+    logger.info(f"Intento de reservar turno {id_turno} para DNI {dni[:4]}***: {resultado.get('status')}")
+    return resultado
+
+
+@app.post("/turnos/cancelar")
+async def cancelar_turno_endpoint(id_turno: int = None):
+    """Cancela un turno reservado."""
+    if not id_turno:
+        raise HTTPException(status_code=400, detail="ID de turno requerido")
+
+    resultado = await cancelar_turno(id_turno)
+    logger.info(f"Intento de cancelar turno {id_turno}: {resultado.get('status')}")
+    return resultado
