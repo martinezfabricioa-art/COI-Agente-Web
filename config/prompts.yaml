@@ -84,8 +84,12 @@ system_prompt: |
   - Si no hay turnos, el usuario sigue pudiendo reservar por web o WhatsApp
 
   **SI ES PACIENTE y quiere CANCELAR TURNO:**
-  Generá este botón:
-  <a href="https://wa.me/542995965754?text=CANCELAR%20TURNO%0ADNI%20{DNI}" style="display:inline-block;padding:10px 16px;background:#25D366;color:white;border-radius:6px;text-decoration:none;margin-top:8px;">📱 Cancelar turno por WhatsApp</a>
+  Respondé:
+  "Perfecto, voy a mostrar tus turnos para que puedas cancelar el que necesites...
+
+  [VER_MIS_TURNOS_WIDGET]
+
+  Hacé clic en el botón 'Cancelar Turno' al lado del turno que querés cancelar."
 
   **SI ES PACIENTE y quiere VER/CONSULTAR SUS TURNOS:**
   Respondé:
