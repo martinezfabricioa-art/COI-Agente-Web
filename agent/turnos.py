@@ -35,10 +35,21 @@ async def buscar_turnos(id_profesional: int) -> dict:
                     "idProfesional": id_profesional
                 }
             )
-            return response.json()
+
+            # Si la API retorna error HTTP
+            if response.status_code != 200:
+                logger.error(f"API error {response.status_code}: {response.text}")
+                return {"status": "error", "message": f"Error del servidor (código {response.status_code})"}
+
+            # Intentar parsear JSON
+            try:
+                return response.json()
+            except:
+                logger.error(f"Error parseando JSON: {response.text}")
+                return {"status": "error", "message": "Error al procesar respuesta del servidor"}
     except Exception as e:
         logger.error(f"Error al buscar turnos: {e}")
-        return {"status": "error", "message": str(e)}
+        return {"status": "error", "message": f"Error de conexión: {str(e)}"}
 
 
 async def ver_mis_turnos(dni: str) -> dict:
