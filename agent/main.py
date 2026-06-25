@@ -213,7 +213,7 @@ async def buscar_turnos_html(id_profesional: int):
     return {"html": html}
 
 
-@app.post("/turnos/mis-turnos")
+@app.get("/turnos/mis-turnos")
 async def mis_turnos_endpoint(dni: str = None):
     """Obtiene los turnos del paciente por DNI."""
     if not dni:

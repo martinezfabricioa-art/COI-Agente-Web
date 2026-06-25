@@ -326,6 +326,9 @@
     if (role === "assistant") {
       // Detectar marcador de búsqueda de turnos [BUSCAR_TURNOS_WIDGET:X]
       var buscarTurnosMatch = text.match(/\[BUSCAR_TURNOS_WIDGET:(\d+)\]/);
+      // Detectar marcador de ver mis turnos [VER_MIS_TURNOS_WIDGET]
+      var verMisTurnosMatch = text.match(/\[VER_MIS_TURNOS_WIDGET\]/);
+
       if (buscarTurnosMatch) {
         var idProfesional = parseInt(buscarTurnosMatch[1]);
         // Remover el marcador del texto
@@ -334,6 +337,13 @@
         div.innerHTML = text;
         // Buscar turnos y agregar al mensaje
         buscarYMostrarTurnos(div, idProfesional);
+      } else if (verMisTurnosMatch) {
+        // Remover el marcador del texto
+        text = text.replace(/\[VER_MIS_TURNOS_WIDGET\]/, "").trim();
+        // Procesar HTML
+        div.innerHTML = text;
+        // Buscar mis turnos y agregar al mensaje
+        verMisTurnosAutomatico(div);
       } else {
         // Procesar HTML tags (especialmente <a> tags)
         div.innerHTML = text;
@@ -384,6 +394,64 @@
       })
       .catch(function(error) {
         spinnerDiv.textContent = "❌ Error al cargar turnos: " + error.message;
+        scrollBottom();
+      });
+  }
+
+  function verMisTurnosAutomatico(messageDiv) {
+    // Extraer DNI del historial de mensajes
+    var dniMatch = null;
+    var allMsgs = messages.querySelectorAll(".ak-msg.user");
+    allMsgs.forEach(function(msg) {
+      // Buscar número de 8 dígitos (DNI argentino típico)
+      var match = msg.textContent.match(/\b(\d{7,8})\b/);
+      if (match && !dniMatch) {
+        dniMatch = match[1];
+      }
+    });
+
+    if (!dniMatch) {
+      var errorDiv = document.createElement("div");
+      errorDiv.style.marginTop = "8px";
+      errorDiv.style.padding = "10px";
+      errorDiv.style.backgroundColor = "#fef2f2";
+      errorDiv.style.borderRadius = "6px";
+      errorDiv.style.borderLeft = "4px solid #ef4444";
+      errorDiv.style.fontSize = "13px";
+      errorDiv.textContent = "❌ No encontré tu DNI en la conversación. Por favor, proporciona tu DNI.";
+      messageDiv.appendChild(errorDiv);
+      return;
+    }
+
+    // Mostrar spinner
+    var spinnerDiv = document.createElement("div");
+    spinnerDiv.style.marginTop = "8px";
+    spinnerDiv.style.fontSize = "13px";
+    spinnerDiv.style.color = "#94a3b8";
+    spinnerDiv.textContent = "⏳ Buscando tus turnos...";
+    messageDiv.appendChild(spinnerDiv);
+
+    // Llamada para obtener mis turnos
+    fetch(API_URL + "/turnos/mis-turnos?dni=" + dniMatch)
+      .then(function(response) {
+        return response.json();
+      })
+      .then(function(data) {
+        spinnerDiv.remove();
+        if (data.data) {
+          var turnosDiv = document.createElement("div");
+          turnosDiv.style.marginTop = "8px";
+          turnosDiv.style.padding = "10px";
+          turnosDiv.style.backgroundColor = "#f0fdf4";
+          turnosDiv.style.borderRadius = "6px";
+          turnosDiv.style.borderLeft = "4px solid #22c55e";
+          turnosDiv.innerHTML = "<strong>📅 Tus turnos:</strong><br>" + data.data;
+          messageDiv.appendChild(turnosDiv);
+        }
+        scrollBottom();
+      })
+      .catch(function(error) {
+        spinnerDiv.textContent = "❌ Error al cargar tus turnos: " + error.message;
         scrollBottom();
       });
   }
