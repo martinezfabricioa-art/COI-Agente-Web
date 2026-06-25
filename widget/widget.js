@@ -256,6 +256,28 @@
     .ak-msg.assistant a:hover {
       opacity: 0.88;
     }
+
+    .btn-cancelar, .btn-reservar {
+      display: inline-block;
+      padding: 8px 14px;
+      margin-top: 8px;
+      background: #ef4444;
+      color: #fff !important;
+      border: none;
+      border-radius: 6px;
+      text-decoration: none !important;
+      font-weight: 500;
+      font-size: 13px;
+      cursor: pointer;
+      transition: opacity 0.2s;
+    }
+    .btn-cancelar:hover:not(:disabled), .btn-reservar:hover:not(:disabled) {
+      opacity: 0.88;
+    }
+    .btn-cancelar:disabled, .btn-reservar:disabled {
+      opacity: 0.6;
+      cursor: not-allowed;
+    }
   `;
 
   // ── Inyectar CSS ───────────────────────────────────────────────────────────
@@ -447,11 +469,59 @@
           turnosDiv.style.borderLeft = "4px solid #22c55e";
           turnosDiv.innerHTML = "<strong>📅 Tus turnos:</strong><br>" + data.data;
           messageDiv.appendChild(turnosDiv);
+
+          // Agregar manejadores de eventos para botones de cancelar
+          setTimeout(function() {
+            var cancelBtns = turnosDiv.querySelectorAll(".btn-cancelar");
+            cancelBtns.forEach(function(btn) {
+              btn.addEventListener("click", function(e) {
+                e.preventDefault();
+                var idTurno = btn.getAttribute("data-id");
+                cancelarTurnoAutomatico(idTurno, btn);
+              });
+            });
+          }, 100);
         }
         scrollBottom();
       })
       .catch(function(error) {
         spinnerDiv.textContent = "❌ Error al cargar tus turnos: " + error.message;
+        scrollBottom();
+      });
+  }
+
+  function cancelarTurnoAutomatico(idTurno, btnElement) {
+    if (!idTurno) return;
+
+    if (!confirm("¿Estás seguro de que querés cancelar este turno?")) {
+      return;
+    }
+
+    var originalText = btnElement.textContent;
+    btnElement.textContent = "⏳ Cancelando...";
+    btnElement.disabled = true;
+
+    fetch(API_URL + "/turnos/cancelar", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ id_turno: parseInt(idTurno) })
+    })
+      .then(function(response) {
+        return response.json();
+      })
+      .then(function(data) {
+        if (data.status === "success") {
+          btnElement.textContent = "✅ Cancelado";
+          btnElement.style.backgroundColor = "#22c55e";
+        } else {
+          btnElement.textContent = "❌ Error: " + data.message;
+          btnElement.style.backgroundColor = "#ef4444";
+        }
+        scrollBottom();
+      })
+      .catch(function(error) {
+        btnElement.textContent = "❌ Error: " + error.message;
+        btnElement.style.backgroundColor = "#ef4444";
         scrollBottom();
       });
   }

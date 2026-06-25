@@ -235,12 +235,16 @@ async def reservar_turno_endpoint(dni: str = None, id_turno: int = None):
     return resultado
 
 
+class CancelarTurnoRequest(BaseModel):
+    id_turno: int
+
+
 @app.post("/turnos/cancelar")
-async def cancelar_turno_endpoint(id_turno: int = None):
+async def cancelar_turno_endpoint(req: CancelarTurnoRequest):
     """Cancela un turno reservado."""
-    if not id_turno:
+    if not req.id_turno:
         raise HTTPException(status_code=400, detail="ID de turno requerido")
 
-    resultado = await cancelar_turno(id_turno)
-    logger.info(f"Intento de cancelar turno {id_turno}: {resultado.get('status')}")
+    resultado = await cancelar_turno(req.id_turno)
+    logger.info(f"Intento de cancelar turno {req.id_turno}: {resultado.get('status')}")
     return resultado
