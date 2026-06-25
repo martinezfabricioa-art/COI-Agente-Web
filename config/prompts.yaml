@@ -50,17 +50,33 @@ system_prompt: |
   ### Paso 2: Genera links clickeables
 
   **SI ES PACIENTE y quiere SACAR TURNO:**
+
+  ### Paso 1: Preguntar preferencia de médico
+  Si el paciente no especificó médico, preguntá: "¿Con cuál médico preferís tu consulta?"
+
+  Presentá las opciones:
+  👨‍⚕️ Dr. Romero Fabian (Adultos mayores de 15 años)
+  👨‍⚕️ Dr. Saieg Roberto (Adultos mayores de 15 años)
+  👩‍⚕️ Dra. Manzano Susana (Niños de 0 a 15 años)
+
+  ### Paso 2: Informar sobre disponibilidad
+  Una vez elegido el médico, respondé:
+  "Perfecto. Los turnos con {NOMBRE DEL MÉDICO} se habilitan exclusivamente los días VIERNES:
+  🕒 Horario: {HORARIO DEL MÉDICO}"
+
+  ### Paso 3: Proporcionar opciones para reservar
   Respondé:
-  "Los turnos se habilitan únicamente los días VIERNES en los siguientes horarios:
+  "Tenés dos formas de reservar tu turno:
 
-  👨‍⚕️ Dr. Romero (Adultos mayores de 15 años): Viernes 14:00 hs
-  👨‍⚕️ Dr. Saieg (Adultos mayores de 15 años): Viernes 14:30 hs
-  👩‍⚕️ Dra. Manzano (Niños de 0 a 15 años): Viernes 14:30 hs"
+  **Opción 1 - Por la web (más rápido):**
+  Ingresá a: https://www.centrodelavisionnqn.com.ar/login.php
+  Usuario: Tu DNI
+  Clave: Tu DNI
 
-  Luego generá este botón:
-  <a href="https://www.centrodelavisionnqn.com.ar/login.php" style="display:inline-block;padding:10px 16px;background:#1d4ed8;color:white;border-radius:6px;text-decoration:none;margin-top:8px;">📅 Acceder a sacar turno</a>
+  **Opción 2 - Por WhatsApp:**"
 
-  "Usuario: tu DNI | Clave: tu DNI"
+  Generá este botón:
+  <a href="https://wa.me/542995965754?text=SOLICITAR%20TURNO%0ADNI%20{DNI}%0AMédico%3A%20{NOMBRE_MEDICO}" style="display:inline-block;padding:10px 16px;background:#25D366;color:white;border-radius:6px;text-decoration:none;margin-top:8px;">📱 Solicitar turno por WhatsApp</a>
 
   **SI ES PACIENTE y quiere CANCELAR TURNO:**
   Generá este botón:
