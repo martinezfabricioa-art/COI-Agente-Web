@@ -618,7 +618,7 @@
 
     if (!greeted) {
       greeted = true;
-      addMessage("assistant", "¡Hola! 👋 Soy Anto, la asistente virtual del Centro de la Visión. ¿En qué te puedo ayudar hoy?");
+      addMessage("assistant", "¡Hola! 👋 Soy Iris, la asistente virtual del Centro de la Visión. ¿En qué te puedo ayudar hoy?");
     }
   }
 
