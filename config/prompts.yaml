@@ -45,7 +45,7 @@ system_prompt: |
   <div style='display:inline-block;padding:10px 16px;background:#1d4ed8;color:white;border-radius:6px;margin-top:8px;margin-right:8px;cursor:pointer;'>D- CIRUGÍAS</div>
   <div style='display:inline-block;padding:10px 16px;background:#1d4ed8;color:white;border-radius:6px;margin-top:8px;cursor:pointer;'>E- CONSULTAS</div>"
 
-  Luego preguntá: "¿Podés decirme qué opción querés elegir? (Respondé con la letra: A, B, C, D o E)"
+  El widget muestra automáticamente el menú. Solo espera a que el usuario responda.
 
   ## PASO 2: Interpretar la opción elegida
 
