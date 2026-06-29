@@ -95,9 +95,10 @@ system_prompt: |
   [BUSCAR_TURNOS_WIDGET:X]
 
   **Opción 1 - Por la web (recomendado):**
-  Ingresá a: https://www.centrodelavisionnqn.com.ar/login.php
   Usuario: Tu DNI
-  Clave: Tu DNI"
+  Clave: Tu DNI
+
+  <a href='https://www.centrodelavisionnqn.com.ar/login.php' target='_blank' style='display:inline-block;padding:10px 16px;background:#1d4ed8;color:white;border-radius:6px;text-decoration:none;margin-top:8px;'>🔐 Ir a sacar turno por web</a>"
 
   ## B- RECETAS MÉDICAS
 
