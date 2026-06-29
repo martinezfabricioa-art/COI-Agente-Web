@@ -1,6 +1,11 @@
 CENTRO DE LA VISIÓN NEUQUÉN
 ============================
 
+A- TURNOS
+B- RECETAS MEDICAS
+C- REALIZAR ESTUDIOS
+D- CIRUGIAS
+
 SOBRE EL CENTRO
 ===============
 Nombre: Centro de la Visión Neuquén
@@ -18,6 +23,26 @@ LISTA DE MÉDICOS
 Dr. Romero Fabian - Oftalmología - Solo Adultos mayores de 15 años
 Dr. Saieg Roberto - Oftalmología - Solo Adultos mayores de 15 años
 Dra. Manzano Susana - Oftalmología - Niños de 0 a 15 años
+
+
+ESTUDIOS
+================
+1- Campo Visual
+2- OCT
+3- Retinofluoresceinografia/Retinografia/Autofluorescencia
+4- Ecografia/UBM
+5- Topografia/Paquimetria
+6- Láser
+7- IOL máster
+8- Estudio ojo seco
+9- IPL
+
+CIRUGIAS
+===============
+1- Catarata
+2-Miopia, Hipermetropia, Astigmatismo
+3- Queratocono
+4- Estrabismo
 
 
 ESPECIALIDADES QUE ATENDEMOS
@@ -54,12 +79,9 @@ Opción 1 - Por la web:
 Flujo de RECETAS:
 =================
 Para gestionar tu receta, por favor envíanos:
-
-Foto de la medicación (o nombre comercial).
-
-Cantidad que requiere (1 o 2 envases).
-
-Una vez enviada la información, la secretaria procesará el pedido en las próximos siete días lo recibirá por sistema charta.
+1 Foto de la medicación (o nombre comercial).
+2 Cantidad que requiere (1 o 2 envases).
+3 Una vez enviada la información, la secretaria procesará el pedido en las próximos siete días lo recibirá por sistema charta.
 
 WhatsApp: Escribi al 54 299 5965754 
 
@@ -73,7 +95,7 @@ contactate directamente por WhatsApp al 54 299 5965754
 PREGUNTAS FRECUENTES
 ====================
 ¿Cómo saco un turno?
-Podés hacerlo desde https://www.centrodelavisionnqn.com.ar/ o escribiendo por WhatsApp al 54 299 5965754
+Podés hacerlo desde https://www.centrodelavisionnqn.com.ar/ 
 
 ¿Qué especialidades atienden?
 Atendemos cataratas, glaucoma, astigmatismo, hipermetropía, miopía, presbicia, conjuntivitis,
