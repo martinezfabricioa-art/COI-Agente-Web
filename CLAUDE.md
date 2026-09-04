@@ -4,7 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Overview
 
-**Centro de la Visión Neuquén** — AI-powered chatbot for medical appointment management. The agent handles turn booking, cancellations, consultations, and recipe requests for an ophthalmology clinic.
+**Odontologia MG** — AI-powered chatbot for dental appointment management. The agent (Marian) handles turn booking, cancellations, consultations, and general inquiries for a dental clinic located in Neuquén, Argentina.
 
 Stack: FastAPI (backend) + JavaScript widget (frontend) + Claude API (AI) + SQLAlchemy ORM + agenteWeb007.php (external turnos API)
 
@@ -14,7 +14,7 @@ Stack: FastAPI (backend) + JavaScript widget (frontend) + Claude API (AI) + SQLA
 - **agent/main.py** — FastAPI server. Endpoints: `/chat`, `/paciente/*`, `/turnos/*`
 - **agent/brain.py** — Claude API integration. Loads system prompt from `config/prompts.yaml`, handles async message generation
 - **agent/memory.py** — SQLAlchemy ORM. Two tables: `Mensaje` (chat history), `Paciente` (patient data). Supports SQLite (dev) or PostgreSQL (prod via `DATABASE_URL` env var)
-- **agent/turnos.py** — HTTP client for external turnos API (`https://centrodelavisionnqn.com.ar/assets/agenteWeb007.php`). Functions: buscar turnos (func 1), ver mis turnos (func 2), reservar (func 3), cancelar (func 4)
+- **agent/turnos.py** — HTTP client for external turnos API (`https://odontologiamg.ar/assets/agenteWeb007.php`). Functions: buscar turnos (func 1), ver mis turnos (func 2), reservar (func 3), cancelar (func 4)
 - **agent/tools.py** — (currently unused, can be extended for agent tools)
 
 ### Frontend (JavaScript widget)
@@ -74,7 +74,7 @@ DATABASE_URL=sqlite+aiosqlite:///./agentkit.db  # SQLite for dev
 ALLOWED_ORIGINS=*                      # CORS whitelist (*, or comma-separated URLs)
 ```
 
-For Railway: use Dashboard → Variables to set `ANTHROPIC_API_KEY`, `ENVIRONMENT=production`, `ALLOWED_ORIGINS=https://www.centrodelavisionnqn.com.ar/`
+For Railway: use Dashboard → Variables to set `ANTHROPIC_API_KEY`, `ENVIRONMENT=production`, `ALLOWED_ORIGINS=https://odontologiamg.ar`
 
 ## Common Tasks
 
@@ -90,7 +90,7 @@ For Railway: use Dashboard → Variables to set `ANTHROPIC_API_KEY`, `ENVIRONMEN
 
 ### Debug turnos API failures
 - Check Railway logs: `tail /var/log/... error.log` or via Dashboard → Logs
-- Test agenteWeb007.php directly: `curl -X POST https://centrodelavisionnqn.com.ar/assets/agenteWeb007.php -d "funcion=1&idProfesional=3"`
+- Test agenteWeb007.php directly: `curl -X POST https://odontologiamg.ar/assets/agenteWeb007.php -d "funcion=1&idProfesional=3"`
 - If 500 error: check agenteWeb007.php DB connection, enable `error_reporting(E_ALL)` in PHP
 
 ### Deploy to Railway
@@ -108,7 +108,7 @@ For Railway: use Dashboard → Variables to set `ANTHROPIC_API_KEY`, `ENVIRONMEN
 
 ## Third-Party Integration
 
-**agenteWeb007.php** — External PHP API at `https://centrodelavisionnqn.com.ar/assets/agenteWeb007.php`
+**agenteWeb007.php** — External PHP API at `https://odontologiamg.ar/assets/agenteWeb007.php`
 - POST parameters: `funcion` (1-4), `dni`, `idProfesional`, `idTurno`
 - Returns JSON with `status` + `data` (HTML string or error message)
 - Wrapping HTTP client in `agent/turnos.py` + backend endpoints `/turnos/*` to handle errors + add logging
